@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Will you be my Valentine?</title>
+</head>
+<body style="overflow: hidden">
+    <video id="bgvid" src="./img/background.mp4" loop autoplay muted>
+        <source src="./img/background.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="img-container">
+        <img id="backgroundImage" src="./img/ask.png" alt="" />
+    </div>
+    <h1></h1>
+    <h1 id="message">Hey, babygirl!  </br> Will you be my Valentine?</h1>
+    <div class="buttons-container">
+        <button type="button" class="button" id="yes-button">
+            <div class="button-top">Yes!</div>
+            <div class="button-bottom"></div>
+            <div class="button-base"></div>
+        </button>
+        <button type="button" class="button" id="no-button">
+            <div class="button-top">No!</div>
+            <div class="button-bottom"></div>
+            <div class="button-base"></div>
+        </button>
+    </div>
+    <script>
+        const noButton = document.getElementById("no-button");
+        const yesButton = document.getElementById("yes-button");
+        const backgroundImage = document.getElementById("backgroundImage");
+        const message = document.getElementById("message");
+        const asks = [
+        "Pretty Please?",
+        "I beg you!",
+        "You don’t want to see me cry, do you? It’s not pretty, trust me.",
+        "How about a nice foot massage? Or a back rub? Or a full body massage?",
+        "I’ll let you pet my unicorn",
+        "Don’t make me go all Maximum Effort on you!"]
+
+        yesButton.addEventListener("click", function() {
+            backgroundImage.src = './img/happy.png';
+            message.innerHTML = "I knew it! See you soon honey!";
+            noButton.style.display = "none";
+            yesButton.style.display = 'none';
+        });
+
+        noButton.addEventListener("mouseover", function () {
+            noButton.style.left = `${Math.ceil(Math.random() * 90)}%`;
+            noButton.style.top = `${Math.ceil(Math.random() * 90)}%`;
+            const randomNumber = Math.ceil(Math.random() * 4);
+            backgroundImage.src = `./img/sad${randomNumber}.png`;
+            message.innerHTML = `${asks[Math.ceil(Math.random() * 5)]}`
+        });
+    </script>
+</body>
+</html>
